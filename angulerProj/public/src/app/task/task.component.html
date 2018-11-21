@@ -1,0 +1,30 @@
+<body>
+    <div class="game">
+        <img class="cakeimg" src="{{task[0].url}}" alt="cake image">
+        <div class="gameinfo">
+            <h1>{{task[0].name}}</h1>
+            <h3>Average Rating: {{average}}</h3>
+            <h3>{{task[0].genre}}</h3>
+            <p>Minimum age: {{task[0].minage}}</p>
+            <p>Maximum number of players: {{task[0].players}}</p>
+            <p>More info: {{task[0].moreinfo}}</p>
+        </div>
+        <!-- <h1>{{task[0].name}}</h1>
+        <h3>{{task[0].genre}}</h3>
+        <h1>{{task[0].minage}}</h1>
+        <h1>{{task[0].players}}</h1>
+        <h3>{{task[0].moreinfo}}</h3> -->
+
+
+        <!-- {{task | json}} -->
+        
+        <div class="ratings">
+        <div *ngFor="let item of task[0].ratings; let i = index">
+            <!-- {{item|json}} -->
+            <p>Rating: {{item["stars"]}} <i class="fas fa-star"></i></p>
+            <p class="comment">{{item["comment"]}}</p>
+            <br>
+        </div>
+        </div>
+    </div>
+</body>

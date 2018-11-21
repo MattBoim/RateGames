@@ -1,0 +1,59 @@
+.jumbotron {
+    background-color: #EF476F;
+    color: #fff;
+    padding: 50px 25px;
+    font-family: Montserrat, sans-serif;
+}
+
+.create{
+    vertical-align: top;
+    /* width: 400px; */
+    border: 3px solid #06D6A0;
+    padding: 0px 10px;
+    margin: 20px 10px 0px 20px;
+    display: inline-block;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px;
+    /* height:420px; */
+    box-shadow:10px 10px 50px grey;  
+}
+
+.create button{
+    margin-top: 5px; 
+}
+
+.toprow{
+    text-align: center;
+}
+
+.list{
+    border: 3px solid #06D6A0;
+    padding: 5px;
+    vertical-align: top;
+    display: inline-block;
+    margin: 20px 20px 20px 20px;
+    background-color: white;
+    border-radius: 20px;
+    overflow:scroll; 
+    height:420px;
+    box-shadow:10px 10px 50px grey;  
+}
+
+.rate{
+    margin: 5px;
+}
+
+.rate .stars{
+    margin: 5px;
+}
+
+.game{
+    /* width: 500px; */
+    margin: 20px auto;
+    padding: 10px 0px;
+}
+
+.item{
+    margin: 5px 0px;
+}

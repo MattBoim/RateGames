@@ -1,0 +1,109 @@
+
+
+<body>
+  <div class="jumbotron text-center">
+    <h1>Board Game Rater</h1>
+    <p>Rate your favorite board games and find new ones</p>
+    <span style="font-size: 6em; color: white;">
+        <i class="fas fa-dice"></i>
+    </span>
+  </div>
+  <div *ngIf="task[0]" class="game">
+    <app-task [task] = "task"></app-task>
+  </div>
+  <div class="toprow">
+  <div class="create">
+    <form (submit)="onSubmit()">
+      <h2 class="text-center">Add a Board Game</h2>
+      <span class="error">{{error}}</span>
+      <div class="row">
+        <div class="col-sm-4">
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="newGame.name"
+            #name="ngModel"
+            id="title" class="form-control"
+            required
+            placeholder="Title"
+          >
+          <span class="error" *ngIf="name.errors">
+              Game title is required
+          </span>
+        </div>
+        <div class="col-sm-4">
+          <input
+            type="text" 
+            name="url" 
+            [(ngModel)]="newGame.url" 
+            #url="ngModel"
+            required
+            minlength="4"
+            id="url" 
+            class="form-control" 
+            placeholder="Image url"
+          >
+          <span class="error" *ngIf="url.errors">
+            image url is required
+          </span>
+        </div>
+        <div class="col-sm-4">
+          <input 
+            type="number" 
+            name="newGame.minage" 
+            [(ngModel)]="newGame.minage" 
+            id="age" class="form-control" 
+            placeholder="Min Age"
+          >
+        </div>
+      </div>
+      <br>
+      <div class="row">
+          <div class="form-group col-md-6">
+            <select id="inputState" class="form-control" name="genre" [(ngModel)]="newGame.genre" required #genre="ngModel">
+              <option>Family Game</option>
+              <option>Strategy Game</option>
+              <option>Party Game</option>
+              <option>Kids Game</option>
+              <option>Cooperative Game</option>
+              <option>Adult Only Game</option>
+            </select>
+            <span class="error" *ngIf="genre.errors">
+              Genre must be specified
+            </span>
+          </div>
+          <div class="form-group col-md-6">
+            <input type="number" name="newGame.players" [(ngModel)]="newGame.players" id="players" class="form-control" placeholder="Max Players">
+          </div>
+      </div>
+      <textarea class="form-control" rows="4" id="comment" name="newGame.moreinfo" [(ngModel)]="newGame.moreinfo" placeholder="More info..."></textarea>
+        <div class="text-center">
+          <button type="submit" class="btn-lg btn-success">Submit</button>
+        </div>
+    </form>
+  </div>
+
+  <div class="list">
+    <div class="item" *ngFor="let item of games; let i = index">
+      <div class="">
+        <img src="{{item?.url}}" alt="game picture" height="200px" (click)="onButtonClickGameShow(item._id)">
+      </div>
+      <div class="rate">
+      <select name="stars" [(ngModel)]="newRating.stars" class="stars" required>
+        <option value="1" selected>1 star</option>
+        <option value="2">2 stars</option>
+        <option value="3">3 stars</option>
+        <option value="4">4 stars</option>
+        <option value="5" selected>5 stars</option>
+      </select>
+      <br>
+      <textarea name="comment" [(ngModel)]="newRating.comment" id="" cols="30" rows="4" placeholder="Type your comment here..."></textarea>
+      <br>
+      <button type="button" class="btn btn-success" (click)="postRate(item._id)">Rate</button>
+
+    </div>
+    </div>
+  </div>
+</div>
+</body>
+<router-outlet></router-outlet>
